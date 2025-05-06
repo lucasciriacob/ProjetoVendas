@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ProjetoVendas
 {
-    public partial class Form3: Form
+    public partial class FormVendedor : Form
     {
-        public Form3()
+        private DataTable tabelaProdutos;
+
+        public FormVendedor()
         {
             InitializeComponent();
+
         }
+
+        
     }
 }

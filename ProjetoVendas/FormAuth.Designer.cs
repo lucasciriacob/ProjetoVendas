@@ -40,7 +40,7 @@
             // 
             txtEmail.Location = new Point(40, 88);
             txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "Email...";
+            txtEmail.PlaceholderText = "Usuario...";
             txtEmail.Size = new Size(299, 23);
             txtEmail.TabIndex = 0;
             txtEmail.TextAlign = HorizontalAlignment.Center;

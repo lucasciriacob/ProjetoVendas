@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjetoVendas
 {
-    public partial class Form4: Form
+    public partial class FormAdmin: Form
     {
-        public Form4()
+        public FormAdmin()
         {
             InitializeComponent();
         }

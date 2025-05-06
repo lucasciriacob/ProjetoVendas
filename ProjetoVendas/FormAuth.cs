@@ -28,7 +28,7 @@ namespace ProjetoVendas
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string connectionString = "dataSource = localhost; username = root; password =; database = bd_Estoque";
+            string connectionString = "dataSource = localhost; username = root; password =; database = bd_vendas";
             string usuario = txtEmail.Text.Trim();
             string senha = txtSenha.Text.Trim();
 
@@ -36,11 +36,11 @@ namespace ProjetoVendas
             {
                 conexao.Open();
 
-                string queryLogin = "SELECT id, tipo_usuario FROM usuario WHERE TRIM(nomeUsuario) = @nomeUsuario AND TRIM(senha) = @senha";
+                string queryLogin = "SELECT id, tipo FROM usuarios WHERE TRIM(nome) = @nome AND TRIM(senha) = @senha";
 
                 using (MySqlCommand cmdLogin = new MySqlCommand(queryLogin, conexao))
                 {
-                    cmdLogin.Parameters.AddWithValue("@nomeUsuario", usuario);
+                    cmdLogin.Parameters.AddWithValue("@nome", usuario);
                     cmdLogin.Parameters.AddWithValue("@senha", senha);
 
                     using (MySqlDataReader reader = cmdLogin.ExecuteReader())
@@ -48,19 +48,21 @@ namespace ProjetoVendas
                         if (reader.Read())
                         {
                             int idUsuario = reader.GetInt32("id");
-                            string tipoUsuario = reader.GetString("tipo_usuario");
+                            string tipoUsuario = reader.GetString("tipo");
 
                             Sessao.UsuarioId = idUsuario;
 
                             LimparCampos();
 
-                            if (tipoUsuario == "Admin")
+                            if (tipoUsuario == "admin" )
                             {
-
+                                FormAdmin telaADM = new FormAdmin();
+                                telaADM.Show();
                             }
                             else
                             {
-
+                                FormVendedor telaVendas = new FormVendedor();
+                                telaVendas.Show();
                             }
                         }
                         else
